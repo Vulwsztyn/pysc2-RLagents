@@ -535,7 +535,14 @@ def main():
         minimap=64)),
 	).action_spec()
 	print('Initializing temporary environment to retrive observation_spec...')
-	observation_spec = sc2_env.SC2Env(map_name=map_name).observation_spec()
+	observation_spec = sc2_env.SC2Env(
+	map_name=map_name,
+	players=[sc2_env.Agent(sc2_env.Race.terran)],
+	agent_interface_format=sc2_env.AgentInterfaceFormat(
+        feature_dimensions=sc2_env.Dimensions(
+        screen=64,
+        minimap=64)),
+	).observation_spec()
 	
 	tf.reset_default_graph()
 
