@@ -526,7 +526,10 @@ def main():
 	_running_avg_score = 0
 
 	print('Initializing temporary environment to retrive action_spec...')
-	action_spec = sc2_env.SC2Env(map_name=map_name).action_spec()
+	action_spec = sc2_env.SC2Env(
+	map_name=map_name,
+	players=[sc2_env.Agent(sc2_env.Race.terran)]
+	).action_spec()
 	print('Initializing temporary environment to retrive observation_spec...')
 	observation_spec = sc2_env.SC2Env(map_name=map_name).observation_spec()
 	
